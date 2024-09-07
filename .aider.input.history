@@ -1,0 +1,63 @@
+
+# 2024-09-07 11:38:25.898121
++/help
+
+# 2024-09-07 11:44:03.373878
++create a modern web application that lets the user uplodad a file or multipal files, it should show the progress. and allow for drag and drop functionality
+
+# 2024-09-07 11:47:58.452560
++continue
+
+# 2024-09-07 11:50:20.721663
++write a modenrn file upload application in python with an encryption password and a drag and drop area.
+
+# 2024-09-07 11:54:11.352849
++/run pip install flask cryptography dropzone
+
+# 2024-09-07 11:54:46.602445
++exit
+
+# 2024-09-07 12:04:01.332048
++write a simple upload web page where I can drag and drop files to upload them to my server. It should be run using python.
+
+# 2024-09-07 12:11:01.388900
++/run pip install Flask
+
+# 2024-09-07 12:11:14.685405
++/run mkdir -p templates uploads
+
+# 2024-09-07 12:11:14.808758
++/run touch app.py templates/upload.html
+
+# 2024-09-07 12:11:21.120091
++/run python app.py
+
+# 2024-09-07 12:12:12.384415
++exit
+
+# 2024-09-07 12:12:23.875711
++/exit
+
+# 2024-09-07 12:13:12.040786
++push this to my github
+
+# 2024-09-07 12:13:20.497793
++/run git add .
+
+# 2024-09-07 12:13:23.456528
++/run git commit -m "Update project files"
+
+# 2024-09-07 12:13:29.323156
++/run git push origin main
+
+# 2024-09-07 12:13:55.618501
++i need to sign into github first then we can run those commands
+
+# 2024-09-07 12:15:42.133929
++push this to my github
+
+# 2024-09-07 12:16:43.051603
++git push -u origin main
+
+# 2024-09-07 12:17:00.071152
++/exit
