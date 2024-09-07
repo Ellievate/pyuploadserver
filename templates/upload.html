@@ -13,6 +13,18 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
+        #progress_bar {
+            width: 300px;
+            height: 20px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+        }
+        #progress {
+            width: 0%;
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.1s;
+        }
     </style>
 </head>
 <body>
@@ -21,9 +33,15 @@
         <p>Drag and drop files here or click to select files</p>
         <input type="file" id="fileInput" style="display: none;" multiple>
     </div>
+    <div id="progress_bar">
+        <div id="progress"></div>
+    </div>
+    <p id="status"></p>
     <script>
         const dropZone = document.getElementById('drop_zone');
         const fileInput = document.getElementById('fileInput');
+        const progressBar = document.getElementById('progress');
+        const statusText = document.getElementById('status');
 
         dropZone.addEventListener('click', () => fileInput.click());
 
@@ -56,17 +74,27 @@
             const formData = new FormData();
             formData.append('file', file);
 
-            fetch('/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(result => {
-                alert(result);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload', true);
+
+            xhr.upload.onprogress = (e) => {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    progressBar.style.width = percentComplete + '%';
+                    statusText.textContent = `Uploading: ${Math.round(percentComplete)}%`;
+                }
+            };
+
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    statusText.textContent = response.message || response.error;
+                } else {
+                    statusText.textContent = 'Upload failed';
+                }
+            };
+
+            xhr.send(formData);
         }
     </script>
 </body>
